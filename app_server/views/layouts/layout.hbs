@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}} - Travlr Getaways</title>
+    <link rel='stylesheet' href='css/style.css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="background">
+		  <div id="page">
+        {{> header}}
+        <div id="contents">
+          {{{body}}}
+        </div>
+      </div>
+      {{> footer}}
+    </div>
+    <script>
+      // TODO: Implement a better active nav bar item solution vs. this hack
+      $(".selected").removeClass("selected");
+      $(".nav-" + "{{title}}".toLowerCase()).addClass("selected");
+    </script>
+  </body>
+</html>
