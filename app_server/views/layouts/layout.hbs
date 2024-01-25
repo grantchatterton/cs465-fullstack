@@ -19,6 +19,9 @@
       // TODO: Implement a better active nav bar item solution vs. this hack
       $(".selected").removeClass("selected");
       $(".nav-" + "{{title}}".toLowerCase()).addClass("selected");
+      
+      $(".nav-item.active").removeClass("active");
+      $(".nav-" + "{{title}}".toLowerCase()).addClass("active");
     </script>
   </body>
 </html>
