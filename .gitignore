@@ -67,3 +67,7 @@ typings/
 !.vscode/launch.json
 !.vscode/extensions.json
 *.code-workspace
+
+# Custom files
+data_backup/
+issue.txt
