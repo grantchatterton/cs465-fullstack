@@ -4,8 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('hbs');
-var mongoose = require('mongoose');
-require('./app_server/models/db');
+require('./app_api/models/db');
 
 var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
@@ -15,11 +14,12 @@ const mealsRouter = require('./app_server/routes/meals');
 const newsRouter = require('./app_server/routes/news');
 const aboutRouter = require('./app_server/routes/about');
 const contactRouter = require('./app_server/routes/contact');
+const apiRouter = require('./app_api/routes/index');
 
 var app = express();
 
 // if true, populates the db w/ starter trip data
-const popStartTrips = true;
+const popStartTrips = false;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
@@ -42,6 +42,7 @@ app.use('/meals', mealsRouter);
 app.use('/news', newsRouter);
 app.use('/about', aboutRouter);
 app.use('/contact', contactRouter);
+app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -57,59 +58,6 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-});
-
-// there is likely a MUCH better way to do this...
-const popStartTripsFunc = () => {
-  const printMsg = (msg, div) => {
-    if (div == null) {
-      div = false;
-    }
-
-    const tag = '[ app.js : popStartTripsFunc ]';
-
-    if (div) {
-      console.log(`${tag} : =======================================`);
-    }
-
-    console.log(`${tag} : ${msg}`);
-  };
-
-  if (popStartTrips) {
-    const fs = require('fs');
-    const Trip = require(path.join(__dirname, 'app_server', 'models', 'travlr'));
-  
-    // Remove all current trips from the DB
-    printMsg('Clearing DB before adding starter trip data...');
-    Trip.deleteMany({}).exec()
-      .then((value) => {
-        printMsg(`Removed ${value.deletedCount} documents from the DB.`);
-
-        // Fetch the abs. path to the "data/trips.json" file
-        const tripsJson = path.join(__dirname, 'data', 'trips.json');
-        printMsg(`Parsing ${tripsJson}...`, true);
-        fs.readFile(tripsJson, 'utf8', (error, data) => {
-            if (error) {
-                printMsg(error, false);
-                return;
-            }
-
-            const parsedData = JSON.parse(data);
-            for (let i = 1; parsedData[i] != null; ++i) {
-              const newTrip = new Trip(parsedData[i]);
-              newTrip.save()
-                .then((value) => {
-                  printMsg(`Added trip to DB: ${value.name} (${value.code}).`);
-                });
-            }
-        });
-      });
-  }
-};
-
-mongoose.connection.on("connected", () => {
-  console.log("[ app.js ] Mongoose connected!");
-  popStartTripsFunc();
 });
 
 module.exports = app;
