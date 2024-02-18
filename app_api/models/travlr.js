@@ -29,8 +29,13 @@ if (popStarterTrips) {
   mongoose.connection.on("connected", async () => {
     console.log("Populating starter trips");
 
-    // wipe the DB
-    await Trip.deleteMany({});
+    try {
+      // wipe the DB
+      await Trip.deleteMany({});
+    } catch (err) {
+      console.error(err);
+      console.log("Failure wiping the DB!");
+    }
 
     // populate the DB with starter data
     const trips = [
@@ -69,7 +74,12 @@ if (popStarterTrips) {
       },
     ];
 
-    await Trip.insertMany(trips);
+    try {
+      await Trip.insertMany(trips);
+    } catch (err) {
+      console.error(err);
+      console.log("Failure populating the DB!");
+    }
   });
 }
 
