@@ -1,8 +1,14 @@
-const { Router } = require('express');
-const { tripsList, tripsFindByCode } = require('../controllers/trips');
+const { Router } = require("express");
+const tripsController = require("../controllers/trips");
 
-const app = Router();
-app.get('/', tripsList);
-app.get('/:tripCode', tripsFindByCode);
+const router = Router();
+router
+  .get("/", tripsController.tripsList)
+  .post("/", tripsController.tripsAddTrip);
 
-module.exports = app;
+router
+  .get("/:tripCode", tripsController.tripsFindByCode)
+  .put("/:tripCode", tripsController.tripsUpdateTrip)
+  .delete("/:tripCode", tripsController.tripsDeleteTrip);
+
+module.exports = router;
