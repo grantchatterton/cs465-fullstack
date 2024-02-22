@@ -34,7 +34,6 @@ if (popStarterTrips) {
       await Trip.deleteMany({});
     } catch (err) {
       console.error(err);
-      console.log("Failure wiping the DB!");
     }
 
     // populate the DB with starter data
@@ -78,7 +77,6 @@ if (popStarterTrips) {
       await Trip.insertMany(trips);
     } catch (err) {
       console.error(err);
-      console.log("Failure populating the DB!");
     }
   });
 }

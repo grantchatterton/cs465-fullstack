@@ -74,3 +74,4 @@ connect();
 
 // bring in schema
 require("./travlr");
+require("./user");
