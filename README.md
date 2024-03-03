@@ -17,10 +17,13 @@ A Single-Page Application (SPA) differs from a traditional web app, in that it t
 ### How is JSON different from Javascript and how does JSON tie together the frontend and backend development pieces?
 JSON (or JavaScript Object Notation) is useful for storing data in a key/value pair format. It it commonly used with the implementation of REST APIs, and was used in this project as well. Using JSON ties the front and backend together, considering MongoDB stores documents essentially in JSON format, and requests/responses are fulfilled using JSON as the format of data. Further, JSON data can be easily converted into literal JavaScript objects, for operations and more.
 ### Provide instances in the full stack process when you refactored code to improve functionality and efficiencies, and name the benefits that come from reusable user interface (UI) components.
-
+The biggest refactoring of code occurred in the early stages in the project's development, when it was restructured to use the "Model-View-Controller" (or MVC) architecture. The "model" consisted of the back-end MongoDB database and its models of data. The "view" consisted of each HTML template file for transfer to the client. Finally, the "controller" consisted of handlers for the various endpoints to be served. Using this architecture for application development allows for the idea of "separation of concerns," which is defined as dividing an application into individual "units," each with their own purpose. Alongside the MVC restructuring, consider the implementation of different directories for the "app_api" and "app_server." Each of these folders consist of the required components to serve that specific part of the application, further tying into that idea of separation of concers, considering development for each part of the application can be performed without necessarily requiring changes to another.
 
 ## Testing
 ### Methods for request and retrieval necessitate various types of API testing of endpoints, in addition to the difficulties of testing with added layers of security. Explain your understanding of methods, endpoints, and security in a full stack application.
+#### Methods
+#### Endpoints
+#### Security
 
 ## Reflection
 ### How has this course helped you in reaching your professional goals? What skills have you learned, developed, or mastered in this course to help you become a more marketable candidate in your career field?
