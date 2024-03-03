@@ -6,7 +6,7 @@ CS-465 Full Stack Development with MEAN
 #### Express HTML
 Express HTML was used for serving static files from the web server. Before files are transfered to the client, the templating/view engine [Handlebars](https://handlebarsjs.com/) processes given templating files (such as HTML), replacing marked contents with requested data. Consider something like the meals section of the main Travlr Getaways web page. When a user requests to view this page, first meals stored on the server are fetched, forwarded to the templating engine with the corresponding HTML file for processing, and then forwarded/rendered to the client.
 #### JavaScript
-JavaScript is a programming language used primarily for defining the functionality of a web page. Although intended for front-end/client-side development (for a user's web browser), it has been heavily adopted for use on the server-side through the use of [Node.js](https://nodejs.org). 
+JavaScript is a programming language used primarily for defining the functionality of a web page. Although intended for front-end/client-side development (for a user's web browser), it has been heavily adopted for use on the server-side through the use of [Node.js](https://nodejs.org). This project used the "MEAN" technological stack for development, which consists of [MongoDB](https://www.mongodb.com/), [Express](https://expressjs.com/), [Angular](https://angular.io/) and [Node.js](https://nodejs.org). The question may arise why these four specific technologies were combined together to form this stack, and the reason is all of them are JavaScript based. This means that the same language is used throughout, allowing for more streamlined development.
 
 ### Why did the backend use a NoSQL MongoDB database?
 
