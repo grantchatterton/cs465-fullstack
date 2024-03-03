@@ -15,7 +15,9 @@ A Single-Page Application (SPA) differs from a traditional web app, in that it t
 
 ## Functionality
 ### How is JSON different from Javascript and how does JSON tie together the frontend and backend development pieces?
+JSON (or JavaScript Object Notation) is useful for storing data in a key/value pair format. It it commonly used with the implementation of REST APIs, and was used in this project as well. Using JSON ties the front and backend together, considering MongoDB stores documents essentially in JSON format, and requests/responses are fulfilled using JSON as the format of data. Further, JSON data can be easily converted into literal JavaScript objects, for operations and more.
 ### Provide instances in the full stack process when you refactored code to improve functionality and efficiencies, and name the benefits that come from reusable user interface (UI) components.
+
 
 ## Testing
 ### Methods for request and retrieval necessitate various types of API testing of endpoints, in addition to the difficulties of testing with added layers of security. Explain your understanding of methods, endpoints, and security in a full stack application.
